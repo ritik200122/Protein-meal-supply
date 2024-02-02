@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protein Supplements Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+
+        section {
+            padding: 2em;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .product {
+            border: 1px solid #ccc;
+            padding: 1em;
+            margin: 1em;
+            background-color: #fff;
+            border-radius: 8px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 1em;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .cart {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Protein Supplements Store</h1>
+    </header>
+
+    <section>
+        <div class="product">
+            <img src="protein1.jpg" alt="Whey Protein">
+            <h2>Whey Protein</h2>
+            <p>High-quality whey protein for muscle building.</p>
+            <p>Price: $29.99</p>
+            <button onclick="addToCart('Whey Protein', 29.99)">Add to Cart</button>
+        </div>
+
+        <div class="product">
+            <img src="protein2.jpg" alt="Plant-Based Protein">
+            <h2>Plant-Based Protein</h2>
+            <p>Plant-based protein powder for a vegan-friendly option.</p>
+            <p>Price: $34.99</p>
+            <button onclick="addToCart('Plant-Based Protein', 34.99)">Add to Cart</button>
+        </div>
+    </section>
+
+    <div class="cart" id="cart">
+        <h2>Shopping Cart</h2>
+        <ul id="cart-items"></ul>
+        <p>Total: $<span id="total">0.00</span></p>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Protein Supplements Store</p>
+    </footer>
+
+    <script>
+        let cartItems = [];
+        let total = 0;
+
+        function addToCart(productName, price) {
+            cartItems.push({ productName, price });
+            total += price;
+
+            // Update the cart display
+            updateCartDisplay();
+        }
+
+        function updateCartDisplay() {
+            const cartItemsList = document.getElementById('cart-items');
+            const totalElement = document.getElementById('total');
+
+            // Clear previous items
+            cartItemsList.innerHTML = '';
+
+            // Add updated items
+            cartItems.forEach(item => {
+                const listItem = document.createElement('l
